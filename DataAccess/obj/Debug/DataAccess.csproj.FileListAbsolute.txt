@@ -1,0 +1,11 @@
+D:\KPIT\DataAccess\bin\Debug\DataAccess.dll.config
+D:\KPIT\DataAccess\bin\Debug\DataAccess.dll
+D:\KPIT\DataAccess\bin\Debug\DataAccess.pdb
+D:\KPIT\DataAccess\bin\Debug\BusinessObj.dll
+D:\KPIT\DataAccess\bin\Debug\EntityFramework.dll
+D:\KPIT\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\KPIT\DataAccess\bin\Debug\BusinessObj.pdb
+D:\KPIT\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\KPIT\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+D:\KPIT\DataAccess\obj\Debug\DataAccess.dll
+D:\KPIT\DataAccess\obj\Debug\DataAccess.pdb

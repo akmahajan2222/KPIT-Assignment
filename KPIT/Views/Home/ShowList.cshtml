@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BusinessObj.EmployeeBO>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <br />
+    <div style="width:90%; margin:0 auto;">
+        <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>MaritalStatus</th>
+                    <th>Salary</th>
+                    <th>Location</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+           
+        </table>
+    </div>
+</div> 
+<div>
+    @Html.ActionLink("Add More Records", "AddRecords")
+</div>
+@Scripts.Render("~/bundles/jquery")
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#demoGrid').dataTable({
+                "ajax": {
+                    "url": "/Home/ShowListJson",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns" : [
+                        { "data": "Name", "autoWidth": true },
+                        { "data": "Age", "autoWidth": true },
+                        { "data": "MaritalStatus", "autoWidth": true },
+                        { "data": "Salary", "autoWidth": true },
+                        { "data": "Location", "autoWidth": true },
+                        {
+                            "render": function (data, type, full, meta)
+                            { return '<a class="btn btn-danger" href="#" onclick=Delete('+full.Id+')>Delete</a>'; }
+                        },
+                ]
+    });
+
+    function Delete(Id) {
+        $.ajax({
+            url: '../Home/Delete',
+            type: 'get',
+            contentType: "application/json;charset=utf-8",
+            data: {'Id':Id},
+            success: function (data) {
+                alert(data);
+                location.reload();
+            },
+            error: function (x, y, z) {
+                alert('Network error has occurred. Please try again!');
+            }
+        });
+    }
+</script>

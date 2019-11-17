@@ -1,0 +1,10 @@
+D:\KPIT\BUsinessLogic\bin\Debug\BUsinessLogic.dll
+D:\KPIT\BUsinessLogic\bin\Debug\BUsinessLogic.pdb
+D:\KPIT\BUsinessLogic\bin\Debug\BusinessObj.dll
+D:\KPIT\BUsinessLogic\bin\Debug\DataAccess.dll
+D:\KPIT\BUsinessLogic\bin\Debug\EntityFramework.dll
+D:\KPIT\BUsinessLogic\bin\Debug\BusinessObj.pdb
+D:\KPIT\BUsinessLogic\bin\Debug\DataAccess.pdb
+D:\KPIT\BUsinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+D:\KPIT\BUsinessLogic\obj\Debug\BUsinessLogic.dll
+D:\KPIT\BUsinessLogic\obj\Debug\BUsinessLogic.pdb

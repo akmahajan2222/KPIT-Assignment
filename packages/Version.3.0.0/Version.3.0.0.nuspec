@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Version</id>
+    <version>3.0.0</version>
+    <title>Version</title>
+    <authors>Talles L &lt;talleslasmar@gmail.com&gt;</authors>
+    <owners>Talles L &lt;talleslasmar@gmail.com&gt;</owners>
+    <licenseUrl>http://fairlicense.org/</licenseUrl>
+    <projectUrl>https://github.com/tallesl/net-Version</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A ASP.NET MVC HTML Helper that displays the application version number.</description>
+    <summary />
+    <tags>asp-net-mvc footer html-helper version-number</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Web" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Web.Mvc" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Configuration" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

@@ -1,0 +1,8 @@
+D:\KPIT\BusinessObj\bin\Debug\BusinessObj.dll
+D:\KPIT\BusinessObj\bin\Debug\BusinessObj.pdb
+D:\KPIT\BusinessObj\bin\Debug\Version.dll
+D:\KPIT\BusinessObj\bin\Debug\Version.pdb
+D:\KPIT\BusinessObj\bin\Debug\Version.xml
+D:\KPIT\BusinessObj\obj\Debug\BusinessObj.dll
+D:\KPIT\BusinessObj\obj\Debug\BusinessObj.pdb
+D:\KPIT\BusinessObj\obj\Debug\BusinessObj.csprojResolveAssemblyReference.cache

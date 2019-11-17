@@ -1,0 +1,94 @@
+﻿@model BusinessObj.EmployeeBO
+
+@{
+    ViewBag.Title = "AddRecords";
+}
+@if (ViewBag.Message == "Data Saved Successfully")
+{
+    <h2><span class="alert alert-success" id="successMessage">Data Saved Successfully</span></h2>
+}
+@if (ViewBag.Message == "Some-Problem Occured")
+{
+    <h2><span class="alert alert-danger" id="successMessage">Some-Problem Occured</span></h2>
+}
+<h2>Add</h2>
+
+
+@using (Html.BeginForm("AddRecords","Home",FormMethod.Post, new { id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age)
+                @Html.ValidationMessageFor(model => model.Age)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaritalStatusId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(o => o.MaritalStatusId,
+new SelectList(ViewBag.MaritalStatus, "Id", "Status"), "--Select--")
+                @Html.ValidationMessageFor(model => model.MaritalStatusId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salary, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Salary)
+                @Html.ValidationMessageFor(model => model.Salary)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Location, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Location)
+                @Html.ValidationMessageFor(model => model.Location)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Submit" onclick="Insert();" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ShowList")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")
+}
+<script>
+    function Insert()
+    {
+        if ($("#Name").val() == "" || $("#Age").val() == "" || $("#Salary").val() == "" || $("#Location").val() == "" || $("#MaritalStatusId").val() == "") {
+            alert("All fields are mandatory");
+            return;
+        }
+        else {
+            $('#form').submit();
+        }
+        
+    }
+</script>
