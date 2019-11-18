@@ -13,10 +13,10 @@ namespace DataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EmployeeDBEntities : DbContext
+    public partial class EmployeeEntities1 : DbContext
     {
-        public EmployeeDBEntities()
-            : base("name=EmployeeDBEntities")
+        public EmployeeEntities1()
+            : base("name=EmployeeEntities1")
         {
         }
     
@@ -26,6 +26,7 @@ namespace DataAccess
         }
     
         public virtual DbSet<EmployeeData> EmployeeDatas { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<MaritalStatu> MaritalStatus { get; set; }
     }
 }

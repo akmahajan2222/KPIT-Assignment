@@ -34,5 +34,9 @@ namespace BUsinessLogic
        {
            return _emprepository.DeleteRecord(Id);
        }
+       public List<BusinessObj.Location> GetLocationList()
+       {
+           return _emprepository.GetLocationListDB();
+       }
     }
 }

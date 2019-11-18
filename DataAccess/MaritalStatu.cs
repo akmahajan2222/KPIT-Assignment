@@ -14,7 +14,14 @@ namespace DataAccess
     
     public partial class MaritalStatu
     {
+        public MaritalStatu()
+        {
+            this.EmployeeDatas = new HashSet<EmployeeData>();
+        }
+    
         public int Id { get; set; }
         public string MaritalStatus { get; set; }
+    
+        public virtual ICollection<EmployeeData> EmployeeDatas { get; set; }
     }
 }

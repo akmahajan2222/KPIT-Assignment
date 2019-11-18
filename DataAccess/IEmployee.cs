@@ -13,5 +13,6 @@ namespace DataAccess
         string AddDatatoDatabase(EmployeeBO emp);
         List<EmployeeBO> GetEmployeeListDB();
         string DeleteRecord(int Id);
+        List<BusinessObj.Location> GetLocationListDB();
     }
 }

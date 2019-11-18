@@ -4,9 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="92f0e0811ceb46909f3c2ea571c9a7da" Name="Diagram1">
-        <EntityTypeShape EntityType="EmployeeModel.EmployeeData" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmployeeModel.MaritalStatu" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="8803749001864bb692b72957efc5871e" Name="Diagram1">
+        <EntityTypeShape EntityType="EmployeeModel.EmployeeData" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeeModel.Location" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeeModel.MaritalStatu" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="EmployeeModel.FK__EmployeeD__Locat__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeeModel.FK__EmployeeD__Marit__5CD6CB2B" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

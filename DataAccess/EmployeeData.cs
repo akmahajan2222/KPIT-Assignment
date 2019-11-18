@@ -17,8 +17,11 @@ namespace DataAccess
         public int EmpId { get; set; }
         public string Name { get; set; }
         public Nullable<int> Age { get; set; }
-        public int MaritalStatusId { get; set; }
+        public Nullable<int> MaritalStatusId { get; set; }
         public Nullable<int> Salary { get; set; }
-        public string Location { get; set; }
+        public Nullable<int> LocationId { get; set; }
+    
+        public virtual Location Location { get; set; }
+        public virtual MaritalStatu MaritalStatu { get; set; }
     }
 }

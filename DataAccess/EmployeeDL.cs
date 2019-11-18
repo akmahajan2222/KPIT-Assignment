@@ -14,19 +14,23 @@ namespace DataAccess
     public class EmployeeDL:IEmployee
     {
         #region Global Object
-        EmployeeDBEntities _empDB = new EmployeeDBEntities();
+        EmployeeEntities1 _empDB = new EmployeeEntities1();
         #endregion
 
         public List<MaritalStatus> GetMaritalStatusListDB()
         {
             return _empDB.MaritalStatus.Select(x => new MaritalStatus() { Id = x.Id, Status = x.MaritalStatus }).ToList();   
         }
+        public List<BusinessObj.Location> GetLocationListDB()
+        {
+            return _empDB.Locations.Select(x => new BusinessObj.Location() { LocationId = x.LocationId, LocationName = x.Location1}).ToList();
+        }
         public string AddDatatoDatabase(EmployeeBO emp)
         {
             EmployeeData objdata = new EmployeeData()
             {
                 Age=emp.Age,
-                Location=emp.Location,
+                LocationId=emp.LocationId,
                 MaritalStatusId=emp.MaritalStatusId,
                 Name=emp.Name,
                 Salary=emp.Salary
@@ -38,7 +42,7 @@ namespace DataAccess
 
         public List<EmployeeBO> GetEmployeeListDB()
         {
-            return _empDB.EmployeeDatas.Select(x => new EmployeeBO() { Name=x.Name,Age=x.Age,Salary=x.Salary,MaritalStatus=_empDB.MaritalStatus.Where(z=>z.Id==x.MaritalStatusId).Select(z=>z.MaritalStatus).FirstOrDefault(),Location=x.Location,Id=x.EmpId})
+            return _empDB.EmployeeDatas.Select(x => new EmployeeBO() { Name = x.Name, Age = x.Age, Salary = x.Salary, MaritalStatus = _empDB.MaritalStatus.Where(z => z.Id == x.MaritalStatusId).Select(z => z.MaritalStatus).FirstOrDefault(), Location = x.Location.Location1, Id = x.EmpId })
      .ToList();
         }
 

@@ -22,6 +22,7 @@ namespace KPIT.Controllers
         public ActionResult AddRecords()
         {
             ViewBag.MaritalStatus = _empBL.GetMaritalStatus();
+            ViewBag.Location = _empBL.GetLocationList();
             return View();
         }
 
@@ -34,6 +35,7 @@ namespace KPIT.Controllers
         public ActionResult AddRecords(EmployeeBO emp)
         {
             ViewBag.MaritalStatus = _empBL.GetMaritalStatus();
+            ViewBag.Location = _empBL.GetLocationList();
             ViewBag.Message = _empBL.Savedata(emp);
             ModelState.Clear();
             return View();

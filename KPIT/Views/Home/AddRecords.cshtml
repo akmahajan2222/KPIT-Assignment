@@ -16,6 +16,13 @@
 
 @using (Html.BeginForm("AddRecords","Home",FormMethod.Post, new { id = "form" }))
 {
+    <style>
+        .required:after {
+            content: "*";
+            font-weight: bold;
+            color: red;
+        }
+    </style>
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
@@ -23,7 +30,7 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name)
                 @Html.ValidationMessageFor(model => model.Name)
@@ -31,7 +38,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Age, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Age, new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Age)
                 @Html.ValidationMessageFor(model => model.Age)
@@ -39,7 +46,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MaritalStatusId, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MaritalStatusId, new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
                 @Html.DropDownListFor(o => o.MaritalStatusId,
 new SelectList(ViewBag.MaritalStatus, "Id", "Status"), "--Select--")
@@ -48,7 +55,7 @@ new SelectList(ViewBag.MaritalStatus, "Id", "Status"), "--Select--")
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Salary, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Salary, new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Salary)
                 @Html.ValidationMessageFor(model => model.Salary)
@@ -56,16 +63,17 @@ new SelectList(ViewBag.MaritalStatus, "Id", "Status"), "--Select--")
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Location, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LocationId, new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Location)
-                @Html.ValidationMessageFor(model => model.Location)
+                @Html.DropDownListFor(o => o.LocationId,
+new SelectList(ViewBag.Location, "LocationId", "LocationName"), "--Select--")
+                @Html.ValidationMessageFor(model => model.LocationId)
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Submit" onclick="Insert();" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -80,15 +88,15 @@ new SelectList(ViewBag.MaritalStatus, "Id", "Status"), "--Select--")
 @Scripts.Render("~/bundles/jquery")
 }
 <script>
-    function Insert()
-    {
-        if ($("#Name").val() == "" || $("#Age").val() == "" || $("#Salary").val() == "" || $("#Location").val() == "" || $("#MaritalStatusId").val() == "") {
-            alert("All fields are mandatory");
-            return;
-        }
-        else {
-            $('#form').submit();
-        }
+    //function Insert()
+    //{
+    //    if ($("#Name").val() == "" || $("#Age").val() == "" || $("#Salary").val() == "" || $("#Location").val() == "" || $("#MaritalStatusId").val() == "") {
+    //        alert("All fields are mandatory");
+    //        return;
+    //    }
+    //    else {
+    //        $('#form').submit();
+    //    }
         
-    }
+    //}
 </script>

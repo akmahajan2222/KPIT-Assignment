@@ -12,9 +12,16 @@
           <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Age" Type="int" />
-          <Property Name="MaritalStatusId" Type="int" Nullable="false" />
+          <Property Name="MaritalStatusId" Type="int" />
           <Property Name="Salary" Type="int" />
-          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="LocationId" Type="int" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="MaritalStatus">
           <Key>
@@ -23,9 +30,42 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaritalStatus" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK__EmployeeD__Locat__5DCAEF64">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="EmployeeData">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Marit__5CD6CB2B">
+          <End Role="MaritalStatus" Type="Self.MaritalStatus" Multiplicity="0..1" />
+          <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaritalStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeData">
+              <PropertyRef Name="MaritalStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EmployeeModelStoreContainer">
           <EntitySet Name="EmployeeData" EntityType="Self.EmployeeData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatus" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EmployeeD__Locat__5DCAEF64" Association="Self.FK__EmployeeD__Locat__5DCAEF64">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="EmployeeData" EntitySet="EmployeeData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Marit__5CD6CB2B" Association="Self.FK__EmployeeD__Marit__5CD6CB2B">
+            <End Role="MaritalStatus" EntitySet="MaritalStatus" />
+            <End Role="EmployeeData" EntitySet="EmployeeData" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -39,9 +79,19 @@
           <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="Int32" />
-          <Property Name="MaritalStatusId" Type="Int32" Nullable="false" />
+          <Property Name="MaritalStatusId" Type="Int32" />
           <Property Name="Salary" Type="Int32" />
-          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LocationId" Type="Int32" />
+          <NavigationProperty Name="Location" Relationship="Self.FK__EmployeeD__Locat__5DCAEF64" FromRole="EmployeeData" ToRole="Location" />
+          <NavigationProperty Name="MaritalStatu" Relationship="Self.FK__EmployeeD__Marit__5CD6CB2B" FromRole="EmployeeData" ToRole="MaritalStatus" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EmployeeDatas" Relationship="Self.FK__EmployeeD__Locat__5DCAEF64" FromRole="Location" ToRole="EmployeeData" />
         </EntityType>
         <EntityType Name="MaritalStatu">
           <Key>
@@ -49,17 +99,51 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeDatas" Relationship="Self.FK__EmployeeD__Marit__5CD6CB2B" FromRole="MaritalStatus" ToRole="EmployeeData" />
         </EntityType>
-        <EntityContainer Name="EmployeeDBEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__EmployeeD__Locat__5DCAEF64">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="EmployeeData">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Marit__5CD6CB2B">
+          <End Role="MaritalStatus" Type="Self.MaritalStatu" Multiplicity="0..1" />
+          <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaritalStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeData">
+              <PropertyRef Name="MaritalStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmployeeEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="EmployeeDatas" EntityType="Self.EmployeeData" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
           <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatu" />
+          <AssociationSet Name="FK__EmployeeD__Locat__5DCAEF64" Association="Self.FK__EmployeeD__Locat__5DCAEF64">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="EmployeeData" EntitySet="EmployeeDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Marit__5CD6CB2B" Association="Self.FK__EmployeeD__Marit__5CD6CB2B">
+            <End Role="MaritalStatus" EntitySet="MaritalStatus" />
+            <End Role="EmployeeData" EntitySet="EmployeeDatas" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EmployeeModelStoreContainer" CdmEntityContainer="EmployeeDBEntities">
+        <EntityContainerMapping StorageEntityContainer="EmployeeModelStoreContainer" CdmEntityContainer="EmployeeEntities1">
           <EntitySetMapping Name="EmployeeDatas">
             <EntityTypeMapping TypeName="EmployeeModel.EmployeeData">
               <MappingFragment StoreEntitySet="EmployeeData">
@@ -68,7 +152,15 @@
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="MaritalStatusId" ColumnName="MaritalStatusId" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="EmployeeModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="Location1" ColumnName="Location" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

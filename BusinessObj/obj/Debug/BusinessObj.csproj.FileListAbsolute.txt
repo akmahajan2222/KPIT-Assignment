@@ -6,3 +6,11 @@ D:\KPIT\BusinessObj\bin\Debug\Version.xml
 D:\KPIT\BusinessObj\obj\Debug\BusinessObj.dll
 D:\KPIT\BusinessObj\obj\Debug\BusinessObj.pdb
 D:\KPIT\BusinessObj\obj\Debug\BusinessObj.csprojResolveAssemblyReference.cache
+E:\New folder\KPIT-Assignment\BusinessObj\bin\Debug\BusinessObj.dll
+E:\New folder\KPIT-Assignment\BusinessObj\bin\Debug\BusinessObj.pdb
+E:\New folder\KPIT-Assignment\BusinessObj\bin\Debug\Version.dll
+E:\New folder\KPIT-Assignment\BusinessObj\bin\Debug\Version.pdb
+E:\New folder\KPIT-Assignment\BusinessObj\bin\Debug\Version.xml
+E:\New folder\KPIT-Assignment\BusinessObj\obj\Debug\BusinessObj.csprojResolveAssemblyReference.cache
+E:\New folder\KPIT-Assignment\BusinessObj\obj\Debug\BusinessObj.dll
+E:\New folder\KPIT-Assignment\BusinessObj\obj\Debug\BusinessObj.pdb

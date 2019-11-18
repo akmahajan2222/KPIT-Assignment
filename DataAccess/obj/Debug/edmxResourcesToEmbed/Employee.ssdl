@@ -7,9 +7,16 @@
     <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Age" Type="int" />
-    <Property Name="MaritalStatusId" Type="int" Nullable="false" />
+    <Property Name="MaritalStatusId" Type="int" />
     <Property Name="Salary" Type="int" />
-    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationId" Type="int" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationId" />
+    </Key>
+    <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="MaritalStatus">
     <Key>
@@ -18,8 +25,41 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaritalStatus" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK__EmployeeD__Locat__5DCAEF64">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="EmployeeData">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeD__Marit__5CD6CB2B">
+    <End Role="MaritalStatus" Type="Self.MaritalStatus" Multiplicity="0..1" />
+    <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaritalStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeData">
+        <PropertyRef Name="MaritalStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="EmployeeModelStoreContainer">
     <EntitySet Name="EmployeeData" EntityType="Self.EmployeeData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatus" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__EmployeeD__Locat__5DCAEF64" Association="Self.FK__EmployeeD__Locat__5DCAEF64">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="EmployeeData" EntitySet="EmployeeData" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeD__Marit__5CD6CB2B" Association="Self.FK__EmployeeD__Marit__5CD6CB2B">
+      <End Role="MaritalStatus" EntitySet="MaritalStatus" />
+      <End Role="EmployeeData" EntitySet="EmployeeData" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>
