@@ -38,5 +38,10 @@ namespace BUsinessLogic
        {
            return _emprepository.GetLocationListDB();
        }
+       public string GeneralErrorMessage()
+       {
+           return "Some Problem occured please try again later";
+       }
+      
     }
 }

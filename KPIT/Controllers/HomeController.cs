@@ -34,11 +34,42 @@ namespace KPIT.Controllers
         [HttpPost]
         public ActionResult AddRecords(EmployeeBO emp)
         {
-            ViewBag.MaritalStatus = _empBL.GetMaritalStatus();
-            ViewBag.Location = _empBL.GetLocationList();
-            ViewBag.Message = _empBL.Savedata(emp);
-            ModelState.Clear();
-            return View();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ViewBag.MaritalStatus = _empBL.GetMaritalStatus();
+                    ViewBag.Location = _empBL.GetLocationList();
+                    ViewBag.Message = _empBL.Savedata(emp);
+                    ModelState.Clear();
+                    return View();
+                }
+                else
+                {
+                    //var erroneousFields = ModelState.Where(ms => ms.Value.Errors.Any()).ToList();
+                    //Dictionary<string, string> Errors = new Dictionary<string, string>();
+                    //foreach (var item in erroneousFields)
+                    //{
+                    //    Errors.Add(item.Key, item.Value.Errors[0].Exception.InnerException.Message);
+                    //} 
+                    ModelState.AddModelError("Age", "Please enter a Valid age");
+                    ModelState.AddModelError("Salary", "Plesase enter a valid value");
+                    ViewBag.MaritalStatus = _empBL.GetMaritalStatus();
+                    ViewBag.Location = _empBL.GetLocationList();
+                    ViewBag.ErrorMessage = _empBL.GeneralErrorMessage();
+                    return View(emp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.MaritalStatus = _empBL.GetMaritalStatus();
+                ViewBag.Location = _empBL.GetLocationList();
+                ViewBag.ErrorMessage = ex.Message.ToString();
+                return View(emp);
+            }
+           
+            
         }
         /// <summary>
         /// To show list of employees
