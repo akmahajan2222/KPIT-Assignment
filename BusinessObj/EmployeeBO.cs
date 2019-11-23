@@ -14,12 +14,14 @@ namespace BusinessObj
       [Required]
        public string Name { get; set; }
        [Required]
+       [Range(0, 99, ErrorMessage = "Age must be between 0 and 99.")]
        public int? Age { get; set; }
        public string MaritalStatus { get; set; }
        [Required]
        [Display(Name = "Marital Status")]
        public int MaritalStatusId { get; set; }
        [Required]
+       [Range(0, 1000000000, ErrorMessage = "Salary must be between 0 and 1000000000.")]
        public int? Salary { get; set; }
        public string Location { get; set; }
        [Required]

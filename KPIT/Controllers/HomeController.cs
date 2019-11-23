@@ -46,14 +46,6 @@ namespace KPIT.Controllers
                 }
                 else
                 {
-                    //var erroneousFields = ModelState.Where(ms => ms.Value.Errors.Any()).ToList();
-                    //Dictionary<string, string> Errors = new Dictionary<string, string>();
-                    //foreach (var item in erroneousFields)
-                    //{
-                    //    Errors.Add(item.Key, item.Value.Errors[0].Exception.InnerException.Message);
-                    //} 
-                    ModelState.AddModelError("Age", "Please enter a Valid age");
-                    ModelState.AddModelError("Salary", "Plesase enter a valid value");
                     ViewBag.MaritalStatus = _empBL.GetMaritalStatus();
                     ViewBag.Location = _empBL.GetLocationList();
                     ViewBag.ErrorMessage = _empBL.GeneralErrorMessage();
